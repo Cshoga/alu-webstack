@@ -33,21 +33,21 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend clickviral-frontend
+frontend cshoga-frontend
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
         default_backend cshoga-backend
 
-frontend clickviral-frontend-https
+frontend cshoga-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/cshoga.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend cshoga-backend
 
-backend clickviral-backend
+backend cshoga-backend
         balance roundrobin
-        server 5761-web-01 3.92.141.218 check
-        server 5761-web-02 18.232.169.185 check
+        server 5761-web-01 3.92.141.218:80 check
+        server 5761-web-02 18.232.169.185:80 check
 
 
