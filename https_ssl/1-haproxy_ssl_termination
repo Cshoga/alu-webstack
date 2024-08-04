@@ -41,7 +41,7 @@ frontend cshoga-frontend
         default_backend cshoga-backend
 
 frontend cshoga-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/cshoga.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.cshoga.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend cshoga-backend
 
